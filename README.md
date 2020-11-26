@@ -12,8 +12,10 @@ This is a ecommerce addon designed to work on top of the Coaster CMS framework (
 
 The steps are are as follows:
 
-1. Go to the root directory of your project
-2. Run <code>composer require coastercms/coastercommerce:~8.0</code> to install package
-3. Run <code>php artisan migrate</code> to create database tables
-4. Run <code>php artisan vendor:publish --tag=coaster-commerce.assets</code> to publish admin assets
-5. Add the provider CoasterCommerce\Core\Providers\RoutesProvider::class to your config/app.php file (before CoasterRoutesProvider)
+1. Install the framework is you haven't already https://github.com/CoasterCms/framework
+2. Go to the root directory of your project
+3. Run <code>composer require coastercms/coastercommerce:~8.0</code> to install ecomm package
+4. Run <code>php artisan migrate</code> to create ecomm database tables
+5. Run <code>php artisan vendor:publish --tag=coaster-commerce.assets</code> to publish ecomm admin assets
+6. Add the provider CoasterCommerce\Core\Providers\RoutesProvider::class to your config/app.php file (before CoasterRoutesProvider)
+7. Login to admin and you should see an "Ecomm" link in the top right menu
