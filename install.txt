@@ -1,0 +1,23 @@
+1) Get coastercommerce package
+
+composer require web-feet/coastercommerce
+
+2) Add service providers to config/app.php
+
+CoasterCommerce\Core\Providers\ServiceProvider::class,   (somewhere after CoasterCms\CmsServiceProvider)
+CoasterCommerce\Core\Providers\RoutesProvider::class,    (somewhere before CoasterCms\Providers\CoasterRoutesProvider)
+
+3) Run database migration
+
+php artisan migrate
+
+4) Publish assets (for admin)
+
+php artisan vendor:publish --tag=coaster-commerce.assets
+
+5) Clear/update route & config caches
+
+php artisan config:clear  or  php artisan config:cache
+php artisan route:clear  or  php artisan route:cache
+
+

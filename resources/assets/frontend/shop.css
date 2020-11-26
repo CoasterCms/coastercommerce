@@ -1,0 +1,137 @@
+.account-nav .nav-link.active, .nav-pills .show > .nav-link {
+    background: #fff !important;
+    font-weight: bold;
+    border-left: 4px solid #4FAFE7;
+}
+
+.account-nav .nav-link {
+    padding: 14px 20px;
+    transition: all 0.3s ease;
+}
+
+.account-nav .nav-link:hover {
+    background: #fff !important;
+    color: #0e4269 !important;
+}
+
+#cartTable tbody td {
+    vertical-align: middle;
+}
+
+#cartTable .product-thumbnail, #cartTable .product-quantity {
+    width: 200px;
+}
+
+#cartTable .product-remove {
+    width: 40px;
+}
+
+#cartTable .product-subtotal {
+    text-align: right;
+}
+
+#cartTable .product-quantity button {
+    padding: 5px 15px;
+}
+
+#cartTable .product-name a, #cartTable .product-remove a {
+    font-weight: 600;
+    color: #0e4269;
+    font-size: 16px;
+}
+
+#cartTable .product-name dl {
+    margin-bottom: 0;
+}
+
+#cartTable tfoot p {
+    font-size: 25px;
+    color: #0e4269;
+}
+
+#checkout-progress > div.active {
+    background: #57c1ff !important;
+}
+
+#checkout-progress > div.complete {
+    background: #d4edda;
+    cursor: pointer;
+}
+
+#checkout-progress > div.complete:hover {
+    background: #fff;
+}
+
+#checkout-steps > div {
+    display: none;
+}
+
+#checkout-steps > div.active {
+    display: block;
+}
+
+#checkout-steps #details .selected-address {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    color: green;
+    font-weight: bold;
+    display: none;
+}
+
+#checkout-steps #details .address-box.active .selected-address {
+    display: block !important;
+}
+
+#checkout-steps #details .address-box {
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #87add1;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+#checkout-steps #details .address-box p {
+    margin-bottom: 0;
+}
+
+#checkout-steps #details .address-box.active {
+    background: #d4edda !important;
+}
+
+#checkout-steps #details .address-box:hover {
+    background: #fff;
+}
+
+#checkout-steps .methods > div {
+    padding: 10px;
+    border: 1px solid #87add1;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+#checkout-steps .methods > div:hover {
+    background: #fff;
+}
+
+#checkout-steps .methods > div.active {
+    background: #d4edda !important;
+}
+
+#checkout-steps .methods .method > div > label, #checkout-steps .methods .method > div > div {
+    margin-left: 10px;
+}
+
+#checkout-steps .methods .method p {
+    margin-bottom: 0;
+}
+
+#checkout-steps .methods > div input , #checkout-steps #shipping .methods > div label  {
+    cursor: pointer;
+}
+
+#cartSummary p {
+    margin-bottom: 0;
+}

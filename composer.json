@@ -1,0 +1,27 @@
+{
+    "name": "web-feet/coastercommerce",
+    "description": "Ecommerce addon for Coaster CMS",
+    "authors": [
+        {
+            "name": "Neil Jennings",
+            "email": "neil@web-feet.co.uk"
+        }
+    ],
+    "require": {
+        "php": "^7.3|^8.0",
+        "google/recaptcha": "^1.2",
+        "league/csv": "^9.0",
+        "league/iso3166": "~2.1.0",
+        "stripe/stripe-php": "^7.0",
+        "paypal/paypal-checkout-sdk": "1.0.1",
+        "setasign/fpdf": "^1.8"
+    },
+    "autoload": {
+        "files": [
+            "src/functions.php"
+        ],
+        "psr-4": {
+            "CoasterCommerce\\Core\\": "src/"
+        }
+    }
+}

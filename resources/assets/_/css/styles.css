@@ -1,0 +1,364 @@
+
+* {
+    font-family: 'Nunito', sans-serif;
+}
+
+p {
+    color: #647d8a;
+}
+
+.alert {
+    margin-top: .5rem;
+    margin-bottom: 0;
+}
+
+.bg-dark {
+    background: #11394d !important;
+}
+
+.bg-light {
+    background: #fff !important;
+}
+
+.btn-primary {
+    background: #0e4d6c !important;
+    border-color: #0e4d6c !important;
+}
+
+.btn {
+    box-shadow: 5px 5px 13px rgba(0, 0, 0, 0.07);
+    transition: all 0.3s ease;
+    font-size: 14px;
+    padding: 9px 20px;
+}
+
+.btn-danger {
+    background: #ea6975;
+    border-color: #ea6975;
+}
+
+.btn-info {
+    background: #44c6da;
+    border-color: #44c6da;
+}
+
+.btn-success {
+    background: #60d97c;
+    border-color: #60d97c;
+}
+
+.btn-small {
+    padding: .375rem .75rem;
+}
+
+label {
+    opacity: 0.7 !important;
+}
+
+.input-group-text {
+    border-color: #dbe6ea;
+    background: #f6fafb;
+}
+
+.form-control {
+    min-height: 45px;
+    border-color: #dbe6ea;
+    font-size: 15px;
+}
+
+.form-group.row {
+    background: #fdfefe;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    border-radius: 5px;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    background: #f8fafb;
+    font-weight: bold;
+    border-left: 4px solid #11394d;
+}
+
+.nav-pills .nav-link {
+    color: #11394d !important;
+    padding: 14px 20px;
+    transition: all 0.3s ease;
+    font-size: 16px;
+}
+
+.nav-pills .nav-link:hover {
+    background: #f8fafb;
+}
+
+.mainwrap {
+    margin-left: 220px;
+    transition: all 0.3s ease;
+    background: #f3f8fa;
+    min-height: 100vh;
+    padding-top: 60px;
+}
+
+.navbar {
+    left: 220px;
+    box-shadow: 1px 1px 20px rgba(26, 48, 59, 0.1);
+    transition: all 0.3s ease;
+}
+
+.nav-link {
+    font-size: 14px;
+}
+
+.sidebar {
+    width: 220px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px 10px;
+    transition: all 0.3s ease;
+    overflow-y: auto !important;
+}
+
+.sidebar .logo {
+    color: #fff;
+    margin: 10px 0 20px 0;
+}
+
+.sidebar ul li a {
+    padding: 15px 10px;
+    display: block;
+    color: #fff;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    border-radius: 3px;
+}
+
+.sidebar ul li a:hover {
+    background: #0b2b3b;
+    text-decoration: none;
+}
+
+.sidebar .card {
+    padding: 10px;
+    background: #0b2b3b;
+}
+
+.sidebar .card a {
+    padding: 10px 10px !important;
+}
+
+.sidebar .card a:hover {
+    background: #072230;
+}
+
+.sidebar .card {
+    border: none;
+    border-radius: 3px;
+}
+
+.closearrow {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: #fff;
+    position: fixed;
+    bottom: 50px;
+    left: 100px;
+    display: block;
+    z-index: 9999;
+    margin-left: -20px;
+    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+    text-align: center;
+    padding-top: 7px;
+    font-size: 15px;
+    text-indent: -2px;
+    cursor: pointer;
+    color: #11394d;
+    opacity: 0.4;
+}
+
+.closearrow:hover {
+    opacity: 1;
+}
+
+.hide {
+    left: -210px;
+}
+
+.smallleft {
+    left: 10px !important;
+    opacity: 1;
+}
+
+.smallleftmargin {
+    margin-left: 10px !important;
+}
+
+.rotate {
+    transform: rotate(180deg);
+}
+
+#maincontent {
+    overflow: hidden;
+}
+
+#maincontent > .row > div > .card {
+    border: none;
+    margin-top: 14px;
+    margin-bottom: 14px;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 10px 10px 30px rgba(26, 48, 59, 0.03);
+}
+
+.mainwrap > section.content {
+    margin-bottom: 50px;
+}
+
+.mainwrap > footer {
+    left: 220px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: .8rem 1rem;
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+.mainwrap > footer p {
+    margin: 0 !important;
+    font-size: 12px;
+    color: #b6b6b6;
+}
+
+.dataTables_scrollHeadInner, .dataTables_scrollHeadInner > table, .dataTables_scrollBody > table {
+    min-width: 100%;
+}
+
+.dataTables_scroll {
+    margin-bottom: 25px;
+}
+
+.dt-bootstrap4 .dt-head-entries div {
+    display: inline-block;
+    margin-right: 50px;
+}
+
+.dt-bootstrap4 tbody.select-enabled tr {
+    cursor: pointer;
+}
+
+#filterForm, #massActionsForm {
+    background: #f3f8fa;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.select2-container--default .select2-selection--multiple {
+    min-height: 45px !important;
+    border: 1px solid #dbe6ea !important;
+}
+
+.select2-container--default .select2-selection--multiple:focus{
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: #f6fafb !important;
+    border: 1px solid #dbe6ea !important;
+    margin-top: 7px !important;
+    font-size: 15px !important;
+    padding: 3px 5px;
+}
+
+.select2-container--default .select2-selection--multiple .select2-search--inline {
+    margin-top: 5px;
+}
+
+.select2-container .select2-selection--single {
+    min-height: 45px !important;
+    border-color: #dbe6ea !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+    margin-top: 6px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 45px !important;
+}
+
+.file-caption .file-caption-name {
+    margin: 6px 0 0 0;
+}
+.file-input .btn-file {
+    padding-top: 12px;
+}
+
+.file-preview-thumbnails::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.nested-sortable-group .tree-node {
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    margin-bottom: 5px;
+    cursor: grab;
+}
+
+.nested-sortable-group .tree-node:hover {
+    background: lightblue;
+}
+
+.nested-sortable-group .list-group-item {
+    margin-bottom: 0;
+    padding: 0;
+    border: none;
+    background: none;
+}
+
+.nested-sortable-group.list-group .list-group {
+    margin-left: 50px;
+}
+
+.form-borderless {
+    border: none !important;
+    width: 100%;
+    background: #fff;
+}
+
+.accordion h2 {
+    cursor: pointer;
+    font-size: 18px;
+}
+
+#productVariations .variation-conf {
+    min-width: 150px;
+}
+
+#productVariations .input-group input {
+    border-radius: 0;
+}
+
+#productVariations .input-group input[type=text] {
+    height: 30px;
+    min-height: 30px;
+}
+
+#redirectsTable tbody tr {
+    cursor: pointer;
+}
+
+#redirectsTable tbody tr:hover {
+    background: lightblue;
+}
