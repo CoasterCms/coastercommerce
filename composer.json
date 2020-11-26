@@ -24,7 +24,7 @@
         "psr-4": {
             "CoasterCommerce\\Core\\": "src/"
         }
-    }
+    },
     "extra": {
         "laravel": {
             "providers": [
