@@ -1,5 +1,6 @@
 {
     "name": "coastercms/coastercommerce",
+    "license": "GPL-3.0-or-later",
     "description": "Ecommerce addon for Coaster CMS",
     "authors": [
         {
@@ -22,6 +23,13 @@
         ],
         "psr-4": {
             "CoasterCommerce\\Core\\": "src/"
+        }
+    }
+    "extra": {
+        "laravel": {
+            "providers": [
+                "CoasterCommerce\\Core\\Providers\\ServiceProvider"
+            ]
         }
     }
 }
