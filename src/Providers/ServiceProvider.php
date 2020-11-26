@@ -290,6 +290,9 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function register()
     {
+        // make sure cms provider is registered first
+        $this->app->register('CoasterCms\CmsServiceProvider');
+        
         $this->commands($this->_commands);
 
         /** @var Repository $config */
