@@ -78,7 +78,7 @@ class CreateCcSettings extends Migration
             ],
             [
                 'setting' => 'vat_calculate_on',
-                'value' => 'order'
+                'value' => 'item'
             ],
             [
                 'setting' => 'vat_cart_summary_display',

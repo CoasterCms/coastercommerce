@@ -108,7 +108,7 @@
 
 </div>
 
-@section('scripts')
+@section('coastercommerce.scripts')
 <script>
 
 </script>

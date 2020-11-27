@@ -12,7 +12,7 @@ use CoasterCommerce\Core\Currency\Format;
 
     <div class="row">
         <div class="col-sm-12 text-left">
-            <h2 class="mt-5 mb-5 homeh2">{{ $product->name }}</h2>
+            <h2 class="mt-5 mb-5">{{ $product->name }}</h2>
             {!! $coasterCommerceCrumbs->render('breadcrumbs.default.') !!}
         </div>
     </div>
@@ -43,7 +43,7 @@ use CoasterCommerce\Core\Currency\Format;
                 <div class="form-group">
                     {!! $formBuilder->number('qty', 1, ['class' => 'form-control qty_form']) !!}
                 </div>
-                <button type="submit" class="btn btn-default ">
+                <button type="submit" class="btn btn-default">
                     <i class="fas fa-shopping-cart"></i> &nbsp; Add to basket
                 </button>
 
@@ -52,7 +52,7 @@ use CoasterCommerce\Core\Currency\Format;
                 <form class="form-group" action="{{ route('coaster-commerce.frontend.stock.notify') }}" method="post">
                     {!! csrf_field() !!}
                     <input type="hidden" name="product_id" value="{{ $product->id }}">
-                    <input type="text" name="email" class="form-control enteremail" value="{{ $cart->getCustomer() ? $cart->getCustomer()->email : '' }}" placeholder="Enter your email..." required>
+                    <input type="text" name="email" class="form-control" value="{{ $cart->getCustomer() ? $cart->getCustomer()->email : '' }}" placeholder="Enter your email..." required>
                     <button type="submit" class="btn btn-default ">
                         <i class="fas fa-envelope"></i> &nbsp; Notify me when this product is back in stock
                     </button>
@@ -68,7 +68,7 @@ use CoasterCommerce\Core\Currency\Format;
         $relatedProducts = $product->relatedProducts;
         if (!$relatedProducts->count()) {
             $category = $category ?: $product->categories->first();
-            $relatedProducts = $category ? $category->products()->where('product_id', '!=', $product->id)->get() : $relatedProducts;
+            $relatedProducts = $category ? $category->products()->where('id', '!=', $product->id)->get() : $relatedProducts;
         }
         $relatedProducts = $relatedProducts->shuffle()->slice(0, 6);
     @endphp

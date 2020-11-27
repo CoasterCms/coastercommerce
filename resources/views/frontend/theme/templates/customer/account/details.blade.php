@@ -84,7 +84,7 @@ $billingAddress = $customer->defaultBillingAddress();
 
 </div>
 
-@section('scripts')
+@section('coastercommerce.scripts')
 <script>
     $('#otherAddress').click(function (e) {
         window.location = '{{ route('coaster-commerce.frontend.customer.account.address.edit', ['id' => '--']) }}'

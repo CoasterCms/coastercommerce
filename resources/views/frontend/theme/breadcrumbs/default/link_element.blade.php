@@ -1,0 +1,1 @@
+<li class="breadcrumb-item {{ $crumb->active ? ' active' : '' }}">{!! ($crumb->url && !$crumb->active) ? HTML::link($crumb->url, $crumb->name) : $crumb->name !!}</li>

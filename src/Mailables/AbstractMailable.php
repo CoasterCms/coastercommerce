@@ -16,9 +16,9 @@ abstract class AbstractMailable extends Mailable
     protected $_isTest = false;
 
     /**
-     * @param MailerContract $mailer
+     * @param  \Illuminate\Contracts\Mail\Factory|\Illuminate\Contracts\Mail\Mailer  $mailer
      */
-    public function send(MailerContract $mailer)
+    public function send($mailer)
     {
         $from = [Setting::getValue('email_sender_address'), Setting::getValue('email_sender_name')];
         if ($settings = $this->getSettings()) {

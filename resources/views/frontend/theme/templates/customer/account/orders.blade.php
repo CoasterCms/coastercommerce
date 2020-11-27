@@ -67,7 +67,7 @@ $orders = $customer->submittedOrders()->orderBy('order_placed', 'desc')->paginat
 
 </div>
 
-@section('scripts')
+@section('coastercommerce.scripts')
 <script>
 
 </script>

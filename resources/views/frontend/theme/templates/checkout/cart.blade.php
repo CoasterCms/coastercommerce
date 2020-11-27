@@ -17,7 +17,7 @@ $showItemVAT = $cart->order_vat_type == 'item';
 $tableCols = (($showUnitVAT || $showItemVAT) && $cataloguePrices != 'inc') ? 9 : 8;
 ?>
 
-{!! $pb->section('head') !!}
+{!! $cart->view('sections.head') !!}
 
 <div class="container">
 
@@ -166,7 +166,7 @@ $tableCols = (($showUnitVAT || $showItemVAT) && $cataloguePrices != 'inc') ? 9 :
     </div>
 </div>
 
-@section('scripts')
+@section('coastercommerce.scripts')
     <script>
         jQuery(document).ready(function ($) {
             $('#removeCoupon').click(function () {
@@ -183,4 +183,4 @@ $tableCols = (($showUnitVAT || $showItemVAT) && $cataloguePrices != 'inc') ? 9 :
     </script>
 @endsection
 
-{!! $pb->section('footer') !!}
+{!! $cart->view('sections.footer') !!}

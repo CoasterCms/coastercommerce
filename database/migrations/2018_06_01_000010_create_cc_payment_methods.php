@@ -33,7 +33,7 @@ class CreateCcPaymentMethods extends Migration
                 'name' => 'Pay by Cash/Cheque',
                 'class' => \CoasterCommerce\Core\Model\Order\Payment\Cash::class,
                 'sort_value' => 10,
-                'active' => 0,
+                'active' => 1,
                 'order_status' => 'pending'
             ],
             [

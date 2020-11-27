@@ -494,7 +494,7 @@ $hasShipping = !$cart->isVirtual();
     </div>
 </div>
 
-@section('scripts')
+@section('coastercommerce.scripts')
     @if ($craftClicksEnabled)
     <script src="https://cc-cdn.com/generic/scripts/v1/cc_c2a.min.js"></script>
     <script>

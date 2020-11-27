@@ -358,6 +358,7 @@ class Item extends Model
             $this->item_total_vat = $this->item_unit_vat * $this->item_qty;
         } else {
             $this->_setPriceField('total', $this->getPrice('ex') * $this->item_qty, 'ex'); // calc vat & inc vat price from ex vat price
+            $this->item_total_vat = 0;
         }
         $this->checkUBound();
         return $this;

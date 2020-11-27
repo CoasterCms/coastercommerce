@@ -179,7 +179,7 @@
     </div>
 </div>
 
-@section('scripts')
+@section('coastercommerce.scripts')
     <script>
 
         $('.product-quantity button').click(function () {

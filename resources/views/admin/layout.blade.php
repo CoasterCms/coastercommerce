@@ -39,7 +39,7 @@
                 -->
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"> <a class="nav-link" href="/" target="_blank">Open Frontend</a> </li>
-                    @if ($coasterCmsLink = config('coaster::admin.url'))
+                    @if ($coasterCmsLink = config('coaster.admin.url'))
                     <li class="nav-item"> <a class="nav-link" href="/{{ $coasterCmsLink }}">Back to Coaster Admin</a> </li>
                     <li class="nav-item"> <a class="nav-link" href="/{{ $coasterCmsLink }}/logout">Logout</a> </li>
                     @endif

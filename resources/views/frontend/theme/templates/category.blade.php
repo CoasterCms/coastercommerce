@@ -13,7 +13,7 @@ $subCats = $category->getCategories();
 
     <div class="row">
         <div class="col-sm-12 text-left">
-            <h2 class="mt-5 mb-5 homeh2">{{ $category->name }}</h2>
+            <h2 class="mt-5 mb-5">{{ $category->name }}</h2>
             {!! $coasterCommerceCrumbs->render('breadcrumbs.default.') !!}
             {!! $category->content !!}
         </div>
@@ -57,7 +57,7 @@ $subCats = $category->getCategories();
                 <div class="card p-3">
                     <div class="imgholder">
                         <a href="{{ $product->getUrl($category) }}">
-                            <img src="{{ \Croppa::url($product->getImage(), 200) }}" class="img-fluid" alt="{{ $product->name }}" />
+                            <img src="{{ $product->image ? \Croppa::url($product->getImage(), 200) : $product->getImage() }}" class="img-fluid" alt="{{ $product->name }}" />
                         </a>
                     </div>
                     <h4>
