@@ -21,7 +21,7 @@ $router->group(['as' => 'customer.', 'prefix' => $config->get('coaster-commerce.
         $router->get('login', ['uses' => 'CustomerController@login', 'as' => 'login']);
         $router->any('auth', ['uses' => 'CustomerController@auth', 'as' => 'auth']);
         $router->get('register', ['uses' => 'CustomerController@register', 'as' => 'register']);
-        $router->post('register', ['uses' => 'CustomerController@createUser', 'as' => 'register']);
+        $router->post('register', ['uses' => 'CustomerController@createUser', 'as' => 'register.create']);
         $router->get('password-reset', ['uses' => 'CustomerController@passwordReset', 'as' => 'reset']);
         $router->post('password-reset', ['uses' => 'CustomerController@passwordResetEmail', 'as' => 'reset.email']);
         $router->get('password-update/{token}', ['uses' => 'CustomerController@passwordResetUpdate', 'as' => 'reset.update']);
