@@ -8,7 +8,7 @@ $router = app('router');
 /** @var Config $config */
 $config = app('config');
 
-$router->get(config('coaster-commerce.url.frontend.search'), ['uses' => 'SearchController@results', 'as' => 'search.results']);
+$router->get(config('coaster-commerce.url.frontend.search'), ['uses' => 'SearchController@results', 'as' => 'search.results.root']);
 $router->get(config('coaster-commerce.url.frontend.search') . '/{query}', ['uses' => 'SearchController@results', 'as' => 'search.results'])
     ->where('query', '.*');
 
