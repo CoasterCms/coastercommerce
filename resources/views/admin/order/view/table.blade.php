@@ -83,28 +83,28 @@ $tableCols = (($showUnitVAT || $showItemVAT) && $cataloguePrices != 'inc') ? 5 :
     </tbody>
     <tfoot style="text-align: right;">
 
-        @if ($order->order_coupon)
-            {!! view('coaster-commerce::admin.order.view.summary.footer-row', ['value' => ucwords($order->order_coupon), 'field' =>  'Coupon code', 'fieldCols' => $tableCols-1]) !!}
-        @endif
-    
-        {!! view('coaster-commerce::admin.order.view.summary.footer-row', ['value' => $order->getCost('subtotal', $orderSummary), 'field' => 'Subtotal' . $totalsSuffix, 'fieldCols' => $tableCols-1]) !!}
-    
-        @if ($order->order_subtotal_discount_inc_vat > 0)
-            {!! view('coaster-commerce::admin.order.view.summary.footer-row', ['value' => $order->getCost('subtotal_discount', $orderSummary), 'field' => 'Subtotal Discount', 'discount' => true, 'fieldCols' => $tableCols-1]) !!}
-        @endif
-    
-        @if ($order->shipping_method)
-            {!! view('coaster-commerce::admin.order.view.summary.footer-row', ['value' => $order->getCost('shipping', $orderSummary), 'field' => 'Shipping' . $totalsSuffix, 'fieldCols' => $tableCols-1]) !!}
-            @if ($order->order_shipping_discount_inc_vat > 0)
-                {!! view('coaster-commerce::admin.order.view.summary.footer-row', ['value' => $order->getCost('shipping_discount', $orderSummary), 'field' => 'Shipping Discount', 'discount' => true, 'fieldCols' => $tableCols-1]) !!}
-            @endif
-        @endif
-    
-        @if ($vat = $order->totalVAT())
-            {!! view('coaster-commerce::admin.order.view.summary.footer-row', ['value' => $vat, 'field' => 'VAT', 'showZero' => true, 'fieldCols' => $tableCols-1]) !!}
-        @endif
-    
-        {!! view('coaster-commerce::admin.order.view.summary.footer-row', ['value' => $order->order_total_inc_vat, 'field' =>  'Order Total', 'fieldCols' => $tableCols-1]) !!}
+@if ($order->order_coupon)
+{!! view('coaster-commerce::admin.order.view.summary.footer-row', ['value' => ucwords($order->order_coupon), 'field' =>  'Coupon code', 'fieldCols' => $tableCols-1]) !!}
+@endif
 
-    </tfoot>
+{!! view('coaster-commerce::admin.order.view.summary.footer-row', ['value' => $order->getCost('subtotal', $orderSummary), 'field' => 'Subtotal' . $totalsSuffix, 'fieldCols' => $tableCols-1]) !!}
+
+@if ($order->order_subtotal_discount_inc_vat > 0)
+{!! view('coaster-commerce::admin.order.view.summary.footer-row', ['value' => $order->getCost('subtotal_discount', $orderSummary), 'field' => 'Subtotal Discount', 'discount' => true, 'fieldCols' => $tableCols-1]) !!}
+@endif
+
+@if ($order->shipping_method)
+{!! view('coaster-commerce::admin.order.view.summary.footer-row', ['value' => $order->getCost('shipping', $orderSummary), 'field' => 'Shipping' . $totalsSuffix, 'fieldCols' => $tableCols-1]) !!}
+@if ($order->order_shipping_discount_inc_vat > 0)
+{!! view('coaster-commerce::admin.order.view.summary.footer-row', ['value' => $order->getCost('shipping_discount', $orderSummary), 'field' => 'Shipping Discount', 'discount' => true, 'fieldCols' => $tableCols-1]) !!}
+@endif
+@endif
+
+@if ($vat = $order->totalVAT())
+{!! view('coaster-commerce::admin.order.view.summary.footer-row', ['value' => $vat, 'field' => 'VAT', 'showZero' => true, 'fieldCols' => $tableCols-1]) !!}
+@endif
+
+{!! view('coaster-commerce::admin.order.view.summary.footer-row', ['value' => $order->order_total_inc_vat, 'field' =>  'Order Total', 'fieldCols' => $tableCols-1]) !!}
+
+</tfoot>
 </table>

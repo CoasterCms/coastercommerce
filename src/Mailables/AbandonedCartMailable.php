@@ -41,6 +41,7 @@ class AbandonedCartMailable extends AbstractMailable
     public static function testData()
     {
         $cart = new AbandonedCart();
+        $cart->id = 1;
         $cart->order = OrderMailable::testData()[0];
         $cart->email = 'test@example.com';
         return [$cart];
