@@ -80,7 +80,7 @@ class PayPal extends AbstractPayment
         if ($phone = $order->billingAddress()->phone) {
             $additionalPayerInfo["phone"] = [
                 "phone_number"=> [
-                    "national_number"=> $phone
+                    "national_number"=> str_replace(' ', '', $phone)
                 ]
             ];
         }
