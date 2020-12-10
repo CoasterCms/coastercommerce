@@ -52,6 +52,7 @@ class WishListMailable extends AbstractMailable
     public static function testData()
     {
         $wishList = (new WishList())->forceFill([
+            'id' => 1,
             'name' => 'Test List'
         ]);
         $item1 = (new WishList\Item())->forceFill([
