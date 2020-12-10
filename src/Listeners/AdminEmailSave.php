@@ -18,9 +18,9 @@ class AdminEmailSave
         $viewPath = view($mailable->getMarkdownView())->getPath();
         $currentTemplate = trim(trim(str_replace("\r\n", "\n", file_get_contents($viewPath))));
         $newTemplate = trim(trim(str_replace("\r\n", "\n", $event->inputData['contents'])));
-        if (stripos($viewPath, 'vendor/coastercommerce/core') !== false && stripos($viewPath, 'vendor/coaster-commerce') === false) {
-            // if using view in vendor folder overwrite with views/vendor
-            $viewPath = resource_path('views/vendor/coaster-commerce' . substr($viewPath, stripos($viewPath, 'resources/views') + 15));
+        if (stripos($viewPath, 'vendor/coastercms/coastercommerce/resources/views') !== false) {
+            // vendor/coastercms/coastercommerce/resources/views => resources/views/vendor/coaster-commerce
+            $viewPath = str_replace('vendor/coastercms/coastercommerce/resources/views', 'resources/views/vendor/coaster-commerce', $viewPath);
         }
 
         if ($currentTemplate !== $newTemplate) {
