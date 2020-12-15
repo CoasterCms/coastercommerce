@@ -112,7 +112,7 @@ class CreateCcPermissionActions extends Migration
                 'display_group' => 5,
             ],
             [
-                'action' => 'coaster-commerce.admin.permissions',
+                'action' => 'coaster-commerce.admin.permission',
                 'label' => 'Manage Permissions (Full Admin)',
                 'display_group' => 6,
             ],

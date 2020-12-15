@@ -23,11 +23,11 @@ class CreateCcPermissionRoles extends Migration
         $this->_db->table('cc_permission_roles')->insert([
             [
                 'role_id' => 2,
-                'label' => 'Admin',
+                'label' => 'Shop Admin',
             ],
             [
                 'role_id' => 3,
-                'label' => 'Editor',
+                'label' => 'General Shop Management',
             ],
         ]);
     }
