@@ -1,6 +1,7 @@
 <?php namespace CoasterCommerce\Core\Menu;
 
 use Closure;
+use CoasterCommerce\Core\Permissions\PermissionManager;
 use Throwable;
 
 class AdminItem
@@ -32,7 +33,7 @@ class AdminItem
     public $position;
 
     /**
-     * @var AdminItem[]
+     * @var static[]
      */
     public $subItems = [];
 
@@ -124,7 +125,39 @@ class AdminItem
         if (is_callable($this->url)) {
             $this->url = $this->url->__invoke();
         }
+        if (!$this->_canAccess($this) || ($this->subItems && !$this->allowedSubItems())) {
+            return '';
+        }
         return view('coaster-commerce::admin.menu.item', ['item' => $this, 'key' => $key])->render();
+    }
+
+    /**
+     * @return static[]
+     */
+    public function allowedSubItems()
+    {
+        $allowedSubItems = [];
+        foreach ($this->subItems as $subItem) {
+            if ($this->_canAccess($subItem)) {
+                $allowedSubItems[] = $subItem;
+            }
+        }
+        return $allowedSubItems;
+    }
+
+    /**
+     * @param static $item
+     * @return bool
+     */
+    protected function _canAccess($item)
+    {
+        $permissionsManager = app(PermissionManager::class);
+        if (is_callable($item->url)) {
+            $urlFnStaticVars = (new \Reflectionfunction($item->url))->getStaticVariables();
+            return !array_key_exists('route', $urlFnStaticVars) || $permissionsManager->hasPermission($urlFnStaticVars['route']);
+        } else {
+            return true;
+        }
     }
 
 }

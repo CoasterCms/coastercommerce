@@ -13,7 +13,7 @@ class Admin extends CoasterCms
      */
     public function handle(Request $request, Closure $next)
     {
-        return $this->adminHook($request, $next) ?:
+        return $this->adminHook($request, $next, true) ?:
             redirect()->route('coaster.admin.login')->withCookie(cookie('login_path', $request->getRequestUri()));
     }
 

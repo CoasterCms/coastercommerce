@@ -16,11 +16,11 @@ $elId = 'item' . $key;
         <i class="fas fa-{{ $item->icon }}"></i>
         @endif &nbsp; {{ $item->name }}
     </a>
-    @if ($item->subItems)
+    @if ($subItems = $item->allowedSubItems())
     <div class="collapse {{ $item->active ? 'show' : null }}" id="{{ $elId }}">
         <div class="card card-body">
             <ul class="list-unstyled">
-                @foreach($item->subItems as $subKey => $subItem)
+                @foreach($subItems as $subKey => $subItem)
                     {!! $subItem->render($key . '-' . $subKey) !!}
                 @endforeach
             </ul>

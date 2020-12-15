@@ -20,6 +20,7 @@ use CoasterCommerce\Core\Model\Order\ItemPrice;
 use CoasterCommerce\Core\Model\Order\ItemTaxClass;
 use CoasterCommerce\Core\Model\Product\Attribute;
 use CoasterCommerce\Core\Model\Product\AttributeCache;
+use CoasterCommerce\Core\Permissions\PermissionManager;
 use CoasterCommerce\Core\Session\Cart;
 use CoasterCommerce\Core\Console;
 use CoasterCommerce\Core\Session\WishList;
@@ -142,6 +143,12 @@ class ServiceProvider extends BaseServiceProvider
         $router->pushMiddlewareToGroup('coaster.cms', CatalogueRoute::class);
         $router->pushMiddlewareToGroup('web', MessageAlerts::class);
         $router->pushMiddlewareToGroup('web', SessionSaving::class);
+
+        // Admin permissions manager (for route level access, used on middleware & admin menu)
+        $this->app->alias('coaster-commerce.permissions', PermissionManager::class);
+        $this->app->singleton('coaster-commerce.permissions', function (Application $app) {
+            return new PermissionManager($app['auth']->user());
+        });
 
         // coaster commerce frontend message alerts
         $this->app->alias('coaster-commerce.message-alerts.frontend', FrontendAlert::class);
@@ -292,7 +299,7 @@ class ServiceProvider extends BaseServiceProvider
     {
         // make sure cms provider is registered first
         $this->app->register('CoasterCms\CmsServiceProvider');
-        
+
         $this->commands($this->_commands);
 
         /** @var Repository $config */
