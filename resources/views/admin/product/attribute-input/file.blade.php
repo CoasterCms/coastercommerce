@@ -40,9 +40,9 @@
             var fileInputEl = $('#{{ $attribute->id() . $attribute->code }}');
             fileInputEl.fileinput({
                 allowedFileExtensions: ['jpg', 'png', 'gif'],
-                uploadUrl: ccRouter.route('coaster-commerce.admin.product-file.upload', {id: '{{ $product->id }}'}),
+                uploadUrl: ccRouter.route('coaster-commerce.admin.product.file.upload', {id: '{{ $product->id }}'}),
                 uploadExtraData: codeParam,
-                deleteUrl: ccRouter.route('coaster-commerce.admin.product-file.delete', {id: '{{ $product->id }}'}),
+                deleteUrl: ccRouter.route('coaster-commerce.admin.product.file.delete', {id: '{{ $product->id }}'}),
                 deleteExtraData: codeParam,
                 uploadAsync: false,
                 initialPreviewAsData: true,
@@ -54,7 +54,7 @@
                 fileInputEl.fileinput("upload");
             }).on('filesorted', function(event, params) {
                 $.post(
-                    ccRouter.route('coaster-commerce.admin.product-file.sort', {id: '{{ $product->id }}'}),
+                    ccRouter.route('coaster-commerce.admin.product.file.sort', {id: '{{ $product->id }}'}),
                     {stack: params.stack, code: '{{ $attribute->code }}'}
                 );
             }).on('filebatchuploadsuccess', function(event, data) {

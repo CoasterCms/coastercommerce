@@ -61,9 +61,9 @@ $router->get('attribute/{id}/delete', ['uses' => 'AttributeController@delete', '
 $router->get('attribute/{id}/edit', ['uses' => 'AttributeController@edit', 'as' => 'attribute.edit']);
 $router->post('attribute/{id}/save', ['uses' => 'AttributeController@save', 'as' => 'attribute.save']);
 
-$router->post('product-file/{id}/delete', ['uses' => 'ProductFileController@delete', 'as' => 'product-file.delete']);
-$router->post('product-file/{id}/upload', ['uses' => 'ProductFileController@upload', 'as' => 'product-file.upload']);
-$router->post('product-file/{id}/sort', ['uses' => 'ProductFileController@sort', 'as' => 'product-file.sort']);
+$router->post('product-file/{id}/delete', ['uses' => 'ProductFileController@delete', 'as' => 'product.file.delete']);
+$router->post('product-file/{id}/upload', ['uses' => 'ProductFileController@upload', 'as' => 'product.file.upload']);
+$router->post('product-file/{id}/sort', ['uses' => 'ProductFileController@sort', 'as' => 'product.file.sort']);
 
 $router->get('customer', ['uses' => 'CustomerController@list', 'as' => 'customer.list']);
 $router->get('customer/add', ['uses' => 'CustomerController@add', 'as' => 'customer.add']);
