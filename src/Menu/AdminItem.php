@@ -122,11 +122,11 @@ class AdminItem
         usort($this->subItems, function($a, $b) {
             return $a->position <=> $b->position;
         });
-        if (is_callable($this->url)) {
-            $this->url = $this->url->__invoke();
-        }
         if (!$this->_canAccess($this) || ($this->subItems && !$this->allowedSubItems())) {
             return '';
+        }
+        if (is_callable($this->url)) {
+            $this->url = $this->url->__invoke();
         }
         return view('coaster-commerce::admin.menu.item', ['item' => $this, 'key' => $key])->render();
     }
