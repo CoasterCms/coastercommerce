@@ -15,9 +15,9 @@ class CreateCcPermissions extends Migration
         $this->_schema->create('cc_permissions', function(Blueprint $table) {
             $table->increments('id');
             $table->integer('role_id')->unsigned();
-            $table->foreign('role_id')->references('id')->on('cc_permission_roles');
+            $table->foreign('role_id')->references('id')->on('cc_permission_roles')->onDelete('cascade');
             $table->integer('action_id')->unsigned();
-            $table->foreign('action_id')->references('id')->on('cc_permission_actions');
+            $table->foreign('action_id')->references('id')->on('cc_permission_actions')->onDelete('cascade');
             $table->timestamps();
         });
 

@@ -125,5 +125,11 @@ $router->post('system/store', ['uses' => 'StoreController@save', 'as' => 'system
 $router->get('system/pdf', ['uses' => 'PDFController@editSettings', 'as' => 'system.pdf']);
 $router->post('system/pdf', ['uses' => 'PDFController@updateSettings', 'as' => 'system.pdf.update']);
 
+$router->get('permission', ['uses' => 'PermissionController@list', 'as' => 'permission.list']);
+$router->get('permission/add', ['uses' => 'PermissionController@add', 'as' => 'permission.add']);
+$router->get('permission/{id}/edit', ['uses' => 'PermissionController@edit', 'as' => 'permission.edit']);
+$router->post('permission/{id}/save', ['uses' => 'PermissionController@save', 'as' => 'permission.save']);
+$router->get('permission/{id}/delete', ['uses' => 'PermissionController@delete', 'as' => 'permission.delete']);
+
 $router->get('', ['uses' => 'DashboardController@dashboard', 'as' => 'dashboard']);
 $router->get('{other}', ['uses' => 'DashboardController@undefinedRoute', 'as' => '404'])->where('other', '.*');

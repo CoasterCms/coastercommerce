@@ -100,6 +100,7 @@ class AdminMenu
             ->setSubItemRoute('Catalogue Products', '', 'coaster-commerce.admin.import.products', [], 10)
             ->setSubItemRoute('Catalogue Categories', '', 'coaster-commerce.admin.import.categories', [], 20)
             ->setSubItemRoute('Customers', '', 'coaster-commerce.admin.import.customers', [], 30);
+        $this->setItemRoute('Permissions', 'key', 'coaster-commerce.admin.permission.list', null, 200);
         return $this;
     }
 
