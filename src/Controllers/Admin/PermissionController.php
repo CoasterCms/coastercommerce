@@ -93,8 +93,11 @@ class PermissionController extends AbstractController
             ->save();
         // save permissions
         $actionIds = array_keys(array_filter($request->post('permission', [])));
-        (new Permission())->newQuery()->where('role_id', $role->id)->whereNotIn('action_id', $actionIds)->delete();
-        $newActionIds = array_diff($actionIds, $role->permissions()->pluck('id')->toArray());
+        if ($permissionPermission = Action::where('action', 'coaster-commerce.admin.permission')->first()) {
+            $actionIds[] = $permissionPermission->id; // never remove permissions management permission
+        }
+        $role->permissions()->whereNotIn('action_id', $actionIds)->delete();
+        $newActionIds = array_diff($actionIds, $role->permissions()->pluck('action_id')->toArray());
         foreach ($newActionIds as $newActionId) {
             (new Permission())->newQuery()->insert([
                 'role_id' => $role->id,
