@@ -632,6 +632,9 @@ class Order extends Model
         $this->generateSecretKey();
         $this->setState(static::STATUS_QUOTE);
         if (Status::getStatus($this->order_status)->state == static::STATUS_QUOTE) {
+            if ($this->isVirtual()) {
+                $this->shipping_method = null;
+            }
             $this->customer_ip = request()->ip();
             if (array_key_exists('recalculate_items', $options) && $options['recalculate_items']) {
                 $this->recalculateItems();
