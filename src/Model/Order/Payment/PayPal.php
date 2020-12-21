@@ -105,7 +105,7 @@ class PayPal extends AbstractPayment
                     "admin_area_2"=> $order->billingAddress()->town,
                     "admin_area_1"=> $order->billingAddress()->county,
                     "postal_code"=> $order->billingAddress()->postcode,
-                    "country_code"=> (new ISO3166)->alpha3($order->shippingAddress()->country_iso3)['alpha2']
+                    "country_code"=> (new ISO3166)->alpha3($order->billingAddress()->country_iso3)['alpha2']
                 ]
             ] + $additionalPayerInfo,
             "application_context" => [
