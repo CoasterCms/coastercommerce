@@ -17,7 +17,7 @@ use PayPalCheckoutSdk\Orders\OrdersCaptureRequest;
 use PayPalCheckoutSdk\Orders\OrdersCreateRequest;
 
 /**
- * Class SagePay
+ * Class PayPal
  */
 
 class PayPal extends AbstractPayment
