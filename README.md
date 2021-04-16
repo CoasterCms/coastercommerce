@@ -6,7 +6,7 @@
   <a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://poser.pugx.org/coastercms/coastercommerce/license.svg"></a>
 </p>
 
-This is a ecommerce addon designed to work on top of the Coaster CMS framework (https://github.com/Web-Feet/coastercms).
+This is a ecommerce addon designed to work on top of the Coaster CMS framework (https://github.com/CoasterCms/coastercms).
 
 ## Install Addon
 
