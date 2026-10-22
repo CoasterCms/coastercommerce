@@ -29,8 +29,10 @@ class Migration extends BaseMigration
         $this->_db = $db;
         $this->_schema = $this->_db->connection()->getSchemaBuilder();
 
-        $this->_schema->blueprintResolver(function ($table, $callback) {
-            $blueprint = new Blueprint($table, $callback);
+        // Laravel 12+ passes the connection first. With the old ($table, $callback) signature the arguments
+        // still lined up, but Schema::table() callbacks were silently dropped, so alterations did nothing.
+        $this->_schema->blueprintResolver(function ($connection, $table, $callback = null) {
+            $blueprint = new Blueprint($connection, $table, $callback);
             $blueprint->setDatabaseManager($this->_db);
             return $blueprint;
         });

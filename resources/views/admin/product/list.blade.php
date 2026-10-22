@@ -97,6 +97,10 @@ use \CoasterCommerce\Core\Model\Setting;
         $(document).ready(function() {
 
             let filterForm = $('#filterForm');
+            // filters applied to the list; captured on submit, before the form inputs are disabled
+            let currentFilters = getFilterFormInput();
+            // the table only holds the current page, so selections are kept here across pages
+            let selectedIds = new Set();
 
             let dt = $('#productList').DataTable({
                 select: {
@@ -105,13 +109,17 @@ use \CoasterCommerce\Core\Model\Setting;
                 },
                 sDom: "<'row'<'col-sm-12 col-md-6 dt-head-entries'li><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
                 pageLength: 25,
+                // pages, sorting and search run in the database; only the visible page is sent
+                serverSide: true,
+                processing: true,
+                searchDelay: 400,
                 scrollX: true,
                 responsive: true,
                 columns: {!! str_replace('"render":"cc-edit"', '"render":ccEdit()', $columnConf->toJson()) !!},
                 ajax: {
                     'url': '{{ route('coaster-commerce.api.product.admin-list') }}',
                     'data': function (d) {
-                        return $.extend({}, d, getFilterFormInput());
+                        return $.extend({}, d, currentFilters);
                     }
                 },
                 stateSave: true,
@@ -147,7 +155,7 @@ use \CoasterCommerce\Core\Model\Setting;
             filterForm.on('submit', function (e) {
                 e.preventDefault();
 
-                let formInputs = getFilterFormInput();
+                currentFilters = getFilterFormInput();
 
                 let iconSpinner = $(this).find('button > .sync-progress');
                 let iconFilter = $(this).find('button > .sync-ready');
@@ -162,14 +170,14 @@ use \CoasterCommerce\Core\Model\Setting;
                 iconFilter.addClass('d-none');
                 iconSpinner.removeClass('d-none');
 
-                $.get('{{ route('coaster-commerce.api.product.admin-list') }}', formInputs, function(r) {
+                selectedIds.clear();
+                dt.ajax.reload(function () {
                     iconFilter.removeClass('d-none');
                     iconSpinner.addClass('d-none');
                     for (let disableInput of disableInputs) {
                         disableInput.attr('disabled', false);
                     }
-                    dt.clear().rows.add(r.data).draw();
-                    dt.rows().deselect();
+                    updateActionsInfo();
                 });
 
             });
@@ -177,17 +185,47 @@ use \CoasterCommerce\Core\Model\Setting;
             let actionsForm = $('#massActionsForm');
 
             function updateActionsInfo() {
-                actionsForm.find('.aNumber').html(dt.rows({selected: true}).count());
-                $('#aProductIds').val(dt.rows({selected: true}).data().map(a => a.id).toArray().join(','));
+                actionsForm.find('.aNumber').html(selectedIds.size);
+                $('#aProductIds').val(Array.from(selectedIds).join(','));
             }
-            dt.on('select', updateActionsInfo);
-            dt.on('deselect', updateActionsInfo);
+            dt.on('select', function (e, api, type, indexes) {
+                if (type === 'row') {
+                    api.rows(indexes).data().each(function (row) { selectedIds.add(String(row.id)); });
+                    updateActionsInfo();
+                }
+            });
+            dt.on('deselect', function (e, api, type, indexes) {
+                if (type === 'row' && !reselecting) {
+                    api.rows(indexes).data().each(function (row) { selectedIds.delete(String(row.id)); });
+                    updateActionsInfo();
+                }
+            });
+            // Select clears row selections when a new page loads; ignore those deselects (they aren't the user's)
+            // and re-apply the remembered selections once the page is drawn
+            let reselecting = false;
+            dt.on('preXhr', function () {
+                reselecting = true;
+            });
+            dt.on('draw', function () {
+                reselecting = true;
+                dt.rows(function (idx, row) { return selectedIds.has(String(row.id)); }).select();
+                reselecting = false;
+                updateActionsInfo();
+            });
 
             actionsForm.find('.select-items').click(function () {
                 if ($(this).data('type') === 'all') {
-                    dt.rows({filter: 'applied'}).select();
+                    // every product matching the filters and search, not just this page
+                    let params = $.extend({ids_only: 1, search: {value: dt.search()}}, currentFilters);
+                    $.get('{{ route('coaster-commerce.api.product.admin-list') }}', params, function (r) {
+                        selectedIds = new Set(r.ids.map(String));
+                        dt.rows().select();
+                        updateActionsInfo();
+                    });
                 } else {
-                    dt.rows({filter: 'applied'}).deselect();
+                    selectedIds.clear();
+                    dt.rows().deselect();
+                    updateActionsInfo();
                 }
             });
 

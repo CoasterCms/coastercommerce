@@ -107,7 +107,11 @@ class Attribute extends Model
      */
     public function getDataTableColumnConf()
     {
-        return AttributeCache::$frontendTypes->dataTableColumnConf($this);
+        $conf = AttributeCache::$frontendTypes->dataTableColumnConf($this);
+        if ($this->type == 'virtual') {
+            $conf['orderable'] = false; // computed per product, so the list can't be sorted on it in SQL
+        }
+        return $conf;
     }
 
     /**

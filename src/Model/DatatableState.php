@@ -64,7 +64,8 @@ class DatatableState extends Model
      */
     public function filterState($field)
     {
-        $filterData = $this->filter_state ? json_decode($this->filter_state, true) : [];
+        // a request without filters stores the JSON literal null
+        $filterData = ($this->filter_state ? json_decode($this->filter_state, true) : null) ?: [];
         return array_key_exists($field, $filterData) ? $filterData[$field] : null;
     }
 
