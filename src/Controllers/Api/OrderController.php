@@ -20,7 +20,9 @@ class OrderController extends Controller
     {
         $orderColumns = [];
         $orders = Order::with(['addresses', 'status'])->whereIn('order_status', Order\Status::visibleStatuses());
-        foreach ($request->post('filters', []) as $filter => $value) {
+        // the list sends its filters as query parameters; only filterable columns are accepted
+        $filters = array_intersect_key((array) $request->input('filters', []), array_flip(['order_status']));
+        foreach ($filters as $filter => $value) {
             is_array($value) ? $orders->whereIn($filter, $value) : $orders->where($filter, $value);
         }
         $orderCollection = $orders->get();

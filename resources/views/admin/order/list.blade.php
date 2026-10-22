@@ -59,6 +59,8 @@
 
             let dt = $('#orderList').DataTable({
                 pageLength: 25,
+                // the API returns every order; only build table rows for the page being shown
+                deferRender: true,
                 scrollX: true,
                 responsive: true,
                 order: [[1, 'desc']],
