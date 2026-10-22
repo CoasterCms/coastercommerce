@@ -47,7 +47,7 @@ class PromotionController extends AbstractController
      */
     public function add(Request $request)
     {
-        $type = $request->get('type') ;
+        $type = $request->input('type') ;
         $this->_setTitle('New Promotion');
         if (!in_array($type, ['item', 'cart'])) {
             return $this->_view('promotion.add');

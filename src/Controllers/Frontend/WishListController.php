@@ -194,7 +194,7 @@ class WishListController extends AbstractController
     {
         $wishList = WishListModel::find($listId) ?: new WishListModel();
         // check if accessing through public share link
-        $isPublic = ($request->get('share_key') == $wishList->share_key) && $wishList->share_key;
+        $isPublic = ($request->input('share_key') == $wishList->share_key) && $wishList->share_key;
         // check edit permissions
         $canEdit = $this->_canEdit($wishList);
         // redirect invalid list or if no access

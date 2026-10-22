@@ -139,7 +139,7 @@ class PayPal extends AbstractPayment
      */
     public function callbackFailure(Request $request)
     {
-        if ($payment = PayPal\Model::findWithPPId($request->get('token'))) {
+        if ($payment = PayPal\Model::findWithPPId($request->input('token'))) {
             if ($payment->pp_status == 'CREATED' && !$payment->pp_payments) {
                 $payment->pp_payments = json_encode(['action' => 'Cancelled by customer']);
                 $payment->save();
@@ -156,7 +156,7 @@ class PayPal extends AbstractPayment
     public function callbackSuccess(Request $request)
     {
         $errors = ['Payment callback failed, order may not have been created'];
-        if ($payment = PayPal\Model::findWithPPId($request->get('token'))) {
+        if ($payment = PayPal\Model::findWithPPId($request->input('token'))) {
             try {
                 $order = $payment->order;
                 // capture payment in paypal

@@ -1,5 +1,5 @@
 <?php
-/** @var \Collective\Html\FormBuilder $formBuilder */
+/** @var \LaravelLux\Html\FormBuilder $formBuilder */
 ?>{!! $pb->section('head') !!}
 
 <div class="container">

@@ -1,6 +1,6 @@
 <?php
 /** @var \CoasterCommerce\Core\Session\Cart $cart */
-/** @var \Collective\Html\FormBuilder $formBuilder */
+/** @var \LaravelLux\Html\FormBuilder $formBuilder */
 $craftClicksEnabled = !! \CoasterCommerce\Core\Model\Setting::getValue('cc_key');
 ?>
 
@@ -128,7 +128,7 @@ $craftClicksEnabled = !! \CoasterCommerce\Core\Model\Setting::getValue('cc_key')
             <div class="form-group row">
                 <label for="default_billing" class="col-sm-3 col-form-label">Default billing?</label>
                 <div class="col-sm-9">
-                    {!! $formBuilder->checkbox('default_billing', 1, $address->default_billing ?: request()->get('billing'), ['class' => 'form-control']) !!}
+                    {!! $formBuilder->checkbox('default_billing', 1, $address->default_billing ?: request()->input('billing'), ['class' => 'form-control']) !!}
                     <small class="form-text text-danger">{{ $errors->first('default_billing') }}</small>
                 </div>
             </div>
@@ -136,7 +136,7 @@ $craftClicksEnabled = !! \CoasterCommerce\Core\Model\Setting::getValue('cc_key')
             <div class="form-group row">
                 <label for="default_shipping" class="col-sm-3 col-form-label">Default shipping?</label>
                 <div class="col-sm-9">
-                    {!! $formBuilder->checkbox('default_shipping', 1, $address->default_shipping ?: request()->get('shipping'), ['class' => 'form-control']) !!}
+                    {!! $formBuilder->checkbox('default_shipping', 1, $address->default_shipping ?: request()->input('shipping'), ['class' => 'form-control']) !!}
                     <small class="form-text text-danger">{{ $errors->first('default_shipping') }}</small>
                 </div>
             </div>

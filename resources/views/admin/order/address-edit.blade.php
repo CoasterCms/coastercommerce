@@ -1,6 +1,6 @@
 <?php
 /**
- * @var \Collective\Html\FormBuilder $formBuilder
+ * @var \LaravelLux\Html\FormBuilder $formBuilder
  * @var \CoasterCommerce\Core\Model\Order\Address $address
  */
 use CoasterCommerce\Core\Renderer\Admin\Attribute;

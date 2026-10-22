@@ -99,7 +99,7 @@ class SagePay extends AbstractPayment
      */
     public function callbackFailure(Request $request)
     {
-        $this->_updatePaymentData($request->get('crypt'));
+        $this->_updatePaymentData($request->input('crypt'));
         return parent::callbackFailure($request);
     }
 
@@ -110,7 +110,7 @@ class SagePay extends AbstractPayment
      */
     public function callbackSuccess(Request $request)
     {
-        if ($paymentDetails = $this->_updatePaymentData($request->get('crypt'))) {
+        if ($paymentDetails = $this->_updatePaymentData($request->input('crypt'))) {
             $order = $paymentDetails->order;
             // complete order, only mark as paid if amounts match
             $paymentData = $paymentDetails->getPaymentData();

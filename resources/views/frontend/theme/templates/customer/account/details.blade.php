@@ -1,6 +1,6 @@
 <?php
 /** @var \CoasterCommerce\Core\Session\Cart $cart */
-/** @var \Collective\Html\FormBuilder $formBuilder */
+/** @var \LaravelLux\Html\FormBuilder $formBuilder */
 
 $customer = $cart->getCustomer();
 $shippingAddress = $customer->defaultShippingAddress();

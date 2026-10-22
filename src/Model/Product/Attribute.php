@@ -50,7 +50,16 @@ class Attribute extends Model
             case 'default':
                 /** @var Builder $schemaBuilder */
                 $schemaBuilder = app('db')->getSchemaBuilder();
-                return str_replace(['boolean'], ['integer'], $schemaBuilder->getColumnType('cc_products', $this->code));
+                // Laravel 11 reports native column types; keep the labels doctrine/dbal produced
+                $type = $schemaBuilder->getColumnType('cc_products', $this->code);
+                $labels = [
+                    'varchar' => 'string', 'char' => 'string',
+                    'tinyint' => 'integer', 'smallint' => 'integer', 'mediumint' => 'integer', 'int' => 'integer', 'bigint' => 'integer',
+                    'double' => 'float', 'float' => 'float', 'decimal' => 'decimal',
+                    'tinytext' => 'text', 'text' => 'text', 'mediumtext' => 'text', 'longtext' => 'text',
+                    'timestamp' => 'datetime', 'datetime' => 'datetime', 'date' => 'date', 'json' => 'json',
+                ];
+                return $labels[$type] ?? $type;
             default:
                 return $this->type;
         }

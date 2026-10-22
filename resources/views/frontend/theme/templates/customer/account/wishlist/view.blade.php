@@ -1,7 +1,7 @@
 <?php
 /** @var \CoasterCommerce\Core\Session\Cart $cart */
 /** @var \CoasterCommerce\Core\Model\Customer\WishList $wishList */
-/** @var \Collective\Html\FormBuilder $formBuilder */
+/** @var \LaravelLux\Html\FormBuilder $formBuilder */
 /** @var bool $canEdit */
 ?>{!! $pb->section('head') !!}
 

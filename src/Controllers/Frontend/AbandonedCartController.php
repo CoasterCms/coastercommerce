@@ -19,7 +19,7 @@ class AbandonedCartController extends AbstractController
     {
         $email = '';
         if ($cart = AbandonedCart::find($id)) {
-            if ($request->get('email') == $cart->email) {
+            if ($request->input('email') == $cart->email) {
                 if(!AbandonedCart\Unsubscribed::where('email', $cart->email)->first()) {
                     $unsubscribe = new AbandonedCart\Unsubscribed();
                     $unsubscribe->email = $cart->email;
@@ -41,7 +41,7 @@ class AbandonedCartController extends AbstractController
     {
         $validAbandonedCart = false;
         if ($cart = AbandonedCart::find($id)) {
-            if ($request->get('order_key') == $cart->order->order_key) {
+            if ($request->input('order_key') == $cart->order->order_key) {
                 /** @var Order $order */
                 $order = $cart->order;
                 $statusesAllowed = array_diff(Order\Status::quoteStatuses(), ['payment_gateway']); // payment_gateway orders are always clones so ignore

@@ -1,6 +1,6 @@
 <?php
 /** @var \CoasterCommerce\Core\Session\Cart $cart */
-/** @var \Collective\Html\FormBuilder $formBuilder */
+/** @var \LaravelLux\Html\FormBuilder $formBuilder */
 ?>
 
 {!! $cart->view('sections.head') !!}
@@ -23,7 +23,7 @@
             <div class="form-group row">
                 <label for="email" class="col-sm-2 col-form-label">Email</label>
                 <div class="col-sm-10">
-                    {!! $formBuilder->text('email', request()->get('email'), ['class' => 'form-control', 'id' => 'email', 'readonly']) !!}
+                    {!! $formBuilder->text('email', request()->input('email'), ['class' => 'form-control', 'id' => 'email', 'readonly']) !!}
                     <small class="form-text text-danger">{{ $errors->first('email') }}</small>
                 </div>
             </div>

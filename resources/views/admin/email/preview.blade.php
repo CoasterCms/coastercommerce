@@ -1,7 +1,7 @@
 <?php
 /**
  * @var CoasterCommerce\Core\Model\EmailSetting $email
- * @var \Collective\Html\FormBuilder $formBuilder
+ * @var \LaravelLux\Html\FormBuilder $formBuilder
  */
 use CoasterCommerce\Core\Renderer\Admin\Attribute;
 ?>

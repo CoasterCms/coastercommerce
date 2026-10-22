@@ -23,7 +23,7 @@ class SearchController extends AbstractController
      */
     public function results(Request $request, $searchTerm = null)
     {
-        $searchTerm = $searchTerm ?: $request->get('q');
+        $searchTerm = $searchTerm ?: $request->input('q');
 
         if ($searchTerm) {
             $productWeights = (new SearchIndex())->findTermProductWeights($searchTerm);
@@ -37,9 +37,9 @@ class SearchController extends AbstractController
         $productIds = (new SearchIndex())
             ->filterResults($productIds, request()->query());
 
-        $orderBy = $request->get('o', 'relevance');
+        $orderBy = $request->input('o', 'relevance');
         $orderBy = AttributeCache::getProductAttributes()->offsetExists($orderBy) ? $orderBy : 'relevance';
-        $dir = $request->get('d', 'asc');
+        $dir = $request->input('d', 'asc');
         $dir = in_array($dir, ['asc', 'desc']) ? $dir : 'asc';
 
         $pageSize = Setting::getValue('catalogue_pagination') ?: 30;
@@ -47,7 +47,7 @@ class SearchController extends AbstractController
         $productsQuery = (new Product)->with(['variations', 'categories'])->where('enabled', 1);
         if ($orderBy == 'relevance') {
             $productIds = $dir == 'asc' ? $productIds : array_reverse($productIds);
-            $productIdsSlice = array_slice($productIds, ($request->get('page', 1)-1) * $pageSize, $pageSize);
+            $productIdsSlice = array_slice($productIds, ($request->input('page', 1)-1) * $pageSize, $pageSize);
             /** @var Collection $products */
             $products = $productsQuery->whereIn('id', $productIdsSlice)->get()->keyBy('id');
             $orderedProducts = collect();

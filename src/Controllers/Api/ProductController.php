@@ -22,7 +22,7 @@ class ProductController extends Controller
         $columnAttributes = Product\Attribute::getAdminColumns()->keyBy('code');
         $adminColumnCodes = $columnAttributes->pluck('code')->toArray();
         $adminColumnCodes = array_unique(array_merge($adminColumnCodes, ['id'])); // always need id (for edit link)
-        if ($filters = $request->get('attributes')) {
+        if ($filters = $request->input('attributes')) {
             $productQuery = (new Product)->newQuery();
             foreach ($filters as $attributeCode => $filterValue) {
                 if (!is_null($filterValue)) {

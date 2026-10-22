@@ -15,7 +15,7 @@ class AdminCustomerSave
     {
         // update customer meta
         $newMeta = [];
-        if ($metaPostData = request()->get('meta', [])) {
+        if ($metaPostData = request()->input('meta', [])) {
             if (array_key_exists('key', $metaPostData)) {
                 foreach ($metaPostData['key'] as $i => $key) {
                     if (!is_null($key) && $key !== '') {

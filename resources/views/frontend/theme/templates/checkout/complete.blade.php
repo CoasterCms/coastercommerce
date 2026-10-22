@@ -1,7 +1,7 @@
 <?php
 /**
  * @var CoasterCommerce\Core\Session\Cart $cart
- * @var Collective\Html\FormBuilder $formBuilder
+ * @var LaravelLux\Html\FormBuilder $formBuilder
  */
 ?>
 

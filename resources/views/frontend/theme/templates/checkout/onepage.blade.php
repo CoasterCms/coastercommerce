@@ -1,7 +1,7 @@
 <?php
 /**
  * @var CoasterCommerce\Core\Session\Cart $cart
- * @var Collective\Html\FormBuilder $formBuilder
+ * @var LaravelLux\Html\FormBuilder $formBuilder
  */
 $craftClicksEnabled = !! \CoasterCommerce\Core\Model\Setting::getValue('cc_key');
 $hasShipping = !$cart->isVirtual();
@@ -57,7 +57,7 @@ $hasShipping = !$cart->isVirtual();
                             </div>
                         </div>
 
-                        <div id="customerActions" style="@if (request()->get('login'))display: none;@endif">
+                        <div id="customerActions" style="@if (request()->input('login'))display: none;@endif">
                             <button type="button" class="btn btn-info" id="guestButton">Continue as Guest</button>
                             <button type="button" class="btn btn-default" id="customerButton">Or login as customer</button>
                         </div>
@@ -598,7 +598,7 @@ $hasShipping = !$cart->isVirtual();
                 $('#emailFormGroup').prependTo('#customerLogin > form');
             });
 
-            @if (request()->get('login'))
+            @if (request()->input('login'))
             $('#customerButton').trigger('click');
             @endif
 

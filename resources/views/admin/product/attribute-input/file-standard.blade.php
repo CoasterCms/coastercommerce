@@ -1,7 +1,7 @@
 <?php
 /**
  * @var CoasterCommerce\Core\Model\Product\Attribute $attribute
- * @var Collective\Html\FormBuilder $formBuilder
+ * @var LaravelLux\Html\FormBuilder $formBuilder
  * @var Illuminate\Support\ViewErrorBag $errors
  * @var mixed $value
  * @var array $options

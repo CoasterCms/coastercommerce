@@ -1,6 +1,6 @@
 <?php
 /** @var \CoasterCommerce\Core\Session\Cart $cart */
-/** @var \Collective\Html\FormBuilder $formBuilder */
+/** @var \LaravelLux\Html\FormBuilder $formBuilder */
 ?>
 
 {!! $cart->view('sections.head') !!}
@@ -18,7 +18,7 @@
         <div class="col-sm-7">
             {!! $formBuilder->open(['class' => 'form-horizontal', 'route' => 'coaster-commerce.frontend.customer.auth']) !!}
 
-            {!! $formBuilder->hidden('login_path', request()->get('login_path')) !!}
+            {!! $formBuilder->hidden('login_path', request()->input('login_path')) !!}
 
             <div class="form-group row">
                 <label for="email" class="col-sm-2 col-form-label">Email</label>

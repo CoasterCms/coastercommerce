@@ -3,7 +3,7 @@
  * @var CoasterCommerce\Core\Model\Product $product
  * @var CoasterCommerce\Core\Model\Product\Attribute $attribute
  * @var Illuminate\Support\ViewErrorBag $errors
- * @var Collective\Html\FormBuilder $formBuilder
+ * @var LaravelLux\Html\FormBuilder $formBuilder
  * @var array $value // $product->variation_attributes
  */
 $value = $value ?: []; // make sure not null on new new prod

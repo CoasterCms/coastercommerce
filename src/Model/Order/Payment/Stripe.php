@@ -86,7 +86,7 @@ class Stripe extends AbstractPayment
      */
     public function callbackSuccess(Request $request)
     {
-        if ($stripePaymentDetails = Stripe\Model::findWithSession($request->get('session_id'))) {
+        if ($stripePaymentDetails = Stripe\Model::findWithSession($request->input('session_id'))) {
             $order = $stripePaymentDetails->order;
             // complete order, only mark as paid if amounts match
             $this->setSecretKey();
