@@ -26,7 +26,7 @@ class Customer extends Model implements AuthenticatableContact, CanResetPassword
     /**
      * @var array
      */
-    protected $dates = ['last_login'];
+    protected $casts = ['last_login' => 'datetime'];
 
     /**
      * The attributes that are mass assignable.

@@ -25,7 +25,7 @@ class Promotion extends Model
 
     public $table = 'cc_promotions';
 
-    public $dates = ['active_from', 'active_to'];
+    protected $casts = ['active_from' => 'datetime', 'active_to' => 'datetime'];
 
     protected $_allCategories;
 

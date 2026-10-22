@@ -47,7 +47,7 @@ class Order extends Model
     /**
      * @var array
      */
-    public $dates = ['order_placed', 'payment_confirmed', 'shipment_sent'];
+    protected $casts = ['order_placed' => 'datetime', 'payment_confirmed' => 'datetime', 'shipment_sent' => 'datetime'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

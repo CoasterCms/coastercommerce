@@ -13,7 +13,7 @@ class Price extends Model
 
     public $table = 'cc_product_search_price_index';
 
-    public $dates = ['expires'];
+    protected $casts = ['expires' => 'datetime'];
 
     public $timestamps = false;
 
