@@ -43,7 +43,7 @@ Your order confirmation is below. Thank you again for your business.<br />
                         $address->phone ? 'Tel: ' . $address->phone : null,
                     ];
                 @endphp
-                {!! implode('<br />', array_filter(array_map('trim', $lines))) !!}
+                {!! implode('<br />', array_filter(array_map('trim', array_filter($lines)))) !!}
             </td>
             @endforeach
         </tr>

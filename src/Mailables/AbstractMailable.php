@@ -35,9 +35,9 @@ abstract class AbstractMailable extends Mailable
             }
 
             // send to store contact if no to address
-            $this->callbacks[] = function (\Swift_Message $message) {
+            $this->callbacks[] = function (\Symfony\Component\Mime\Email $message) {
                 if (!$message->getTo()) {
-                    $message->setTo(Setting::getValue('store_email'));
+                    $message->to(Setting::getValue('store_email'));
                 }
             };
 
@@ -97,8 +97,10 @@ abstract class AbstractMailable extends Mailable
     public static function sendTest($recipient)
     {
         $mailable = static::testInstance();
-        $mailable->callbacks[] = function (\Swift_Message $message) use($recipient) {
-            $message->setTo($recipient)->setCc([])->setBcc([]);
+        $mailable->callbacks[] = function (\Symfony\Component\Mime\Email $message) use($recipient) {
+            $message->to($recipient);
+            $message->getHeaders()->remove('Cc');
+            $message->getHeaders()->remove('Bcc');
         };
         $mailable->isTest()->send(app('mailer'));
     }
