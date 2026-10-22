@@ -110,7 +110,7 @@ class PDF
      * @param Address $address
      * @return string
      */
-    protected function _getAddressText(Address $address = null)
+    protected function _getAddressText(?Address $address = null)
     {
         if (!$address) {
             return '';

@@ -35,7 +35,7 @@ class Payment extends Model
      * @param Order $order
      * @return AbstractPayment[]
      */
-    public function getMethods(Order $order = null)
+    public function getMethods(?Order $order = null)
     {
         if (is_null(static::$_models)) {
             static::$_models = $this->all();
@@ -88,7 +88,7 @@ class Payment extends Model
      * @param Order $order
      * @return AbstractPayment
      */
-    public function getMethod($methodId, Order $order = null)
+    public function getMethod($methodId, ?Order $order = null)
     {
         foreach (static::getMethods($order) as $method) {
             if ($methodId == $method->code) {

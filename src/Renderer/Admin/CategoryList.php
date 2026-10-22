@@ -62,7 +62,7 @@ class CategoryList
      * @param Category $category
      * @return string
      */
-    public function category(Category $category = null)
+    public function category(?Category $category = null)
     {
         $renderedSubCats = '';
         if ($subCats = $this->subCats($category)) {
@@ -80,7 +80,7 @@ class CategoryList
      * @param Category|null $category
      * @return array
      */
-    public function subCats(Category $category = null)
+    public function subCats(?Category $category = null)
     {
         $subCats = [];
         $catId = $category ? $category->id : 0;

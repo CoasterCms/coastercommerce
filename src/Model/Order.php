@@ -491,7 +491,7 @@ class Order extends Model
      * @param array $options
      * @return Item
      */
-    protected function _addProductItem(Product $product = null, Variation $variation = null, $qty = 1, array $options = [])
+    protected function _addProductItem(?Product $product = null, ?Variation $variation = null, $qty = 1, array $options = [])
     {
         $qty = (int) $qty;
         if ($product && $qty > 0) {

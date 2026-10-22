@@ -61,7 +61,7 @@ class Item extends Model
     /**
      * @param Product $product
      */
-    public function loadProduct(Product $product = null)
+    public function loadProduct(?Product $product = null)
     {
         if ($product) {
             $this->setRelation('product', $product);
@@ -72,7 +72,7 @@ class Item extends Model
     /**
      * @param Product\Variation $variation
      */
-    public function loadVariation(Product\Variation $variation = null)
+    public function loadVariation(?Product\Variation $variation = null)
     {
         if ($variation) {
             $this->setRelation('variation', $variation);
@@ -320,7 +320,7 @@ class Item extends Model
      * @param array $options
      * @return $this
      */
-    public function setProduct(Product $product, Product\Variation $variation = null, $qty = 1, $options = [])
+    public function setProduct(Product $product, ?Product\Variation $variation = null, $qty = 1, $options = [])
     {
         $this->loadVariation($variation);
         $this->loadProduct($product);

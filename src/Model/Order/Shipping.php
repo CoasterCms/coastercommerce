@@ -41,7 +41,7 @@ class Shipping extends Model
      * @param Order $order
      * @return AbstractShipping[]
      */
-    public function getMethods(Order $order = null)
+    public function getMethods(?Order $order = null)
     {
         if (is_null(static::$_models)) {
             static::$_models = $this->all();

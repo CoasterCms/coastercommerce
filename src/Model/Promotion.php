@@ -180,7 +180,7 @@ class Promotion extends Model
      * @param array $ignoreIds
      * @return Collection|static[]
      */
-    public static function getActivePromotions(Product $product = null, Customer $customer = null, $couponCodes = [], $ignoreIds = [])
+    public static function getActivePromotions(?Product $product = null, ?Customer $customer = null, $couponCodes = [], $ignoreIds = [])
     {
         $activePromotions = static::_getActivePromotions();
         if ($ignoreIds) {
