@@ -52,7 +52,7 @@ class Model extends Eloquent
     public static function getRateForDestination($method, $condition, $conditionValue, $country, $postcode)
     {
         $country = $country ?: '*';
-        $postcode = strtoupper(preg_replace('/[\W_]/', '', $postcode)) ?: '*';
+        $postcode = strtoupper(preg_replace('/[\W_]/', '', $postcode ?? '')) ?: '*';
 
         $query = (new static)->where('method', $method);
 

@@ -23,7 +23,7 @@ class FileValue
      */
     public function __construct($value = null)
     {
-        $this->fileData = json_decode($value, true) ?: [];
+        $this->fileData = json_decode($value ?? '', true) ?: [];
     }
 
     /**

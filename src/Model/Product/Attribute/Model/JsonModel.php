@@ -11,7 +11,7 @@ class JsonModel extends AbstractModel
      */
     public function databaseToCollection($value)
     {
-        return json_decode($value, true) ?: [];
+        return json_decode($value ?? '', true) ?: [];
     }
 
     /**

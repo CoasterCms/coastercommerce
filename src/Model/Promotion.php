@@ -225,7 +225,9 @@ class Promotion extends Model
         }
 
         // coupons
-        $couponCodes = array_map('strtolower', is_array($couponCodes) ? $couponCodes : [$couponCodes]);
+        $couponCodes = array_map(function ($couponCode) {
+            return strtolower($couponCode ?? '');
+        }, is_array($couponCodes) ? $couponCodes : [$couponCodes]);
         $activePromotions = $activePromotions->filter(function (Promotion $activePromotion) use ($couponCodes) {
             foreach ($activePromotion->coupons as $coupon) {
                 if (in_array(strtolower($coupon->code), $couponCodes) && $coupon->hasUses()) {
@@ -255,7 +257,9 @@ class Promotion extends Model
      */
     public function reduceCouponUses($couponCodes)
     {
-        $couponCodes = array_map('strtolower', is_array($couponCodes) ? $couponCodes : [$couponCodes]);
+        $couponCodes = array_map(function ($couponCode) {
+            return strtolower($couponCode ?? '');
+        }, is_array($couponCodes) ? $couponCodes : [$couponCodes]);
         foreach ($this->coupons as $coupon) {
             if (in_array(strtolower($coupon->code), $couponCodes) && $coupon->uses_left > 0) {
                 $coupon->uses_left -= 1;

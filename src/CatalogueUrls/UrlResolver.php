@@ -94,7 +94,7 @@ class UrlResolver
         $categories = Category::select(['name', 'url_key', 'id', 'anchor', 'path'])->orderBy('position', 'asc')->get();
         $this->_catIdsByUrl = [];
         foreach ($categories as $category) {
-            $pathArray = explode('/', $category->path);
+            $pathArray = explode('/', $category->path ?? '');
             $this->_catIdsByUrl[$category->url_key . '#' . ($pathArray ? end($pathArray) : '')] = $category->id;
         }
         $this->_catUrlsById = $categories->pluck('url_key', 'id')->toArray();
